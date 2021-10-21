@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
 							echo 'building the application'
-                            sh 'echo $VERSION'
+                            sh 'echo "your not the only one $VERSION"'
             }
         }
         stage('test'){
