@@ -1,26 +1,20 @@
 pipeline {
-    agent any
-    environment {
-        VERSION = VersionNumber([
-            versionNumberString : '${BUILD_YEAR}.${BUILD_MONTH}.${BUILD_ID}',
-            rojectStartDate : '2014-05-19'
-        ]);
-    }
+    agent docker { image 'node:14-alpine' }
     stages {
         stage('build') {
             steps {
-							echo 'building the application'
-                            sh 'echo "your not the only one $VERSION"'
+                echo 'building the application'
+                sh 'node --version'
             }
         }
         stage('test'){
             steps {
-							echo 'testing the application'
+                echo 'testing the application'
             }
         }
         stage('deploy') {
             steps {
-							echo 'deploying the application'
+                echo 'deploying the application'
             }
         }
     }
