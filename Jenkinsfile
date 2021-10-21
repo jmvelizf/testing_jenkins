@@ -1,5 +1,11 @@
 pipeline {
     agent any
+    environment {
+        VERSION = VersionNumber([
+            versionNumberString : '${BUILD_YEAR}.${BUILD_MONTH}.${BUILD_ID}',
+            rojectStartDate : '2014-05-19'
+        ]);
+    }
     stages {
         stage('build') {
             steps {
