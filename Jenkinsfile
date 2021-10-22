@@ -5,13 +5,13 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo 'building the application'
-                sh 'node --version'
+                echo 'Building the application'
+                sh 'npm run build'
             }
         }
-        stage('test'){
+        stage('deliver') {
             steps {
-                echo 'testing the application'
+                echo 'Deliver build files'
             }
         }
         stage('deploy') {
