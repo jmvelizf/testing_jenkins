@@ -10,5 +10,18 @@ services:
       - "9000:8080"
     volumes:
       - ~/testing-jenkins/jenkins:/var/jenkins_home
+      - ~/testing-jenkins/build:/var/build_files
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/local/bin/docker:/usr/local/bin/docker
+  nodejs:
+    user: root
+    container_name: "nodejs_server"
+    command: node ./server/index.js
+    image: node:14
+    working_dir: /app
+    restart: always
+    ports:
+      - "82:3000"
+    volumes:
+      - ~/testing-jenkins/build:/app/build-files
+      - ${PWD}/server:/app/server
